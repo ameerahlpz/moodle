@@ -30,16 +30,29 @@ global $CFG;
 $CFG = new stdClass();
 
 $CFG->dbtype    = getenv('dbtype');
+$CFG->dbtype    = 'mariadb';   //need to merge to mariadb
 $CFG->dblibrary = 'native';
 $CFG->dbhost    = '127.0.0.1';
-$CFG->dbname    = 'test';
-$CFG->dbuser    = 'test';
-$CFG->dbpass    = 'test';
-$CFG->prefix    = 'm_';
-$CFG->dboptions = ['dbcollation' => 'utf8mb4_bin'];
+//$CFG->dbname    = 'test';
+$CFG->dbname    = 'moodle'; //need to read moodle database from phpmyAdmin
+//$CFG->dbuser    = 'test';
+$CFG-> dbuser   = 'root';  //should be root or admin
+//$CFG->dbpass    = 'test';
+$CFG->dppass    ='';
+//$CFG->prefix    = 'm_';
+$CFG->prefix    ='mdl_';
+//$CFG->dboptions = ['dbcollation' => 'utf8mb4_bin'];
+$CFG->dpoptions   = array (
+'dbpersist' => 0,
+'dbport'=> 3306,
+'dbsocket'=>'',
+'dbcollation' => 'utf8mb4_general_ci',
+);
 
-$host = 'localhost';
-$CFG->wwwroot   = "http://{$host}";
+  
+  $host = 'localhost';
+//$CFG->wwwroot   = "http://{$host}";
+$CFG->wwwroot    ="https://https://my.moodle/moodle" //need to go to https://my.moodle/moodle/login/index.php
 $CFG->dataroot  = realpath(dirname(__DIR__)) . '/moodledata';
 $CFG->admin     = 'admin';
 $CFG->directorypermissions = 0777;
