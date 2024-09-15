@@ -29,18 +29,27 @@ unset($CFG);
 global $CFG;
 $CFG = new stdClass();
 
-$CFG->dbtype    = getenv('dbtype');
+//$CFG->dbtype    = getenv('dbtype');
+$CFG->dbtype    = 'mariadb';
 $CFG->dblibrary = 'native';
 $CFG->dbhost    = '127.0.0.1';
-$CFG->dbname    = 'test';
-$CFG->dbuser    = 'test';
-$CFG->dbpass    = 'test';
-$CFG->prefix    = 'm_';
+$CFG->dbname    = 'moodle';  //test
+$CFG->dbuser    = 'root';    //test
+$CFG->dbpass    = '';        //test
+$CFG->prefix    = 'mdl_';
 $CFG->dboptions = ['dbcollation' => 'utf8mb4_bin'];
+$CFG->dboptions = array (
+  'dbpersist' => 0,
+  'dbport' => 3306,
+  'dbsocket' => '',
+  'dbcollation' => 'utf8mb4_general_ci',
+);
 
 $host = 'localhost';
-$CFG->wwwroot   = "http://{$host}";
-$CFG->dataroot  = realpath(dirname(__DIR__)) . '/moodledata';
+//$CFG->wwwroot   = "http://{$host}";
+$CFG->wwwroot   = "http://my.moodle/moodle/login/index.php";
+//$CFG->dataroot  = realpath(dirname(__DIR__)) . '/moodledata';
+$CFG->dataroot  = "C:\\xampp\\moodledata";
 $CFG->admin     = 'admin';
 $CFG->directorypermissions = 0777;
 
